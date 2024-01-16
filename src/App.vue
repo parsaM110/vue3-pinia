@@ -5,6 +5,12 @@
       <img src="https://pinia.vuejs.org/logo.svg" alt="pinia logo" />
       <h1>{{ taskStore.name }}</h1>
     </header>
+
+    <!-- new task from -->
+    <div class="new-task-form">
+      <TaskFrom />
+    </div>
+
     <!-- filter  -->
     <nav class="filter">
       <button @click="filter = 'all'">All tasks</button>
@@ -29,10 +35,12 @@
 <script>
 import { ref } from "vue";
 import TaskDetails from "./components/TaskDetails.vue";
+import TaskFrom from "./components/TaskForm.vue";
 import { useTaskStore } from "./stores/TaskStore";
 export default {
   components: {
     TaskDetails,
+    TaskFrom,
   },
   setup() {
     const taskStore = useTaskStore();

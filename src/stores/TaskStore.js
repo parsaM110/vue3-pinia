@@ -21,4 +21,9 @@ export const useTaskStore = defineStore("taskStore", {
       return state.tasks.length;
     },
   },
+  actions: {
+    addTask(task) {
+      this.tasks.push(task);
+    },
+  },
 }); // useTaskStore is a function -> use `use` is a naming convention
