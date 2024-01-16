@@ -8,4 +8,9 @@ export const useTaskStore = defineStore("taskStore", {
     ],
     name: "Yoshi",
   }),
+  getters: {
+    favs() {
+      return this.tasks.filter((t) => t.isFav);
+    },
+  },
 }); // useTaskStore is a function -> use `use` is a naming convention
