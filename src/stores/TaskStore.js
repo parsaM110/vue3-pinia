@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-
-const useTaskStore = defineStore("taskStore", {
+// if you dont export it you cant use it in App.vue
+export const useTaskStore = defineStore("taskStore", {
   state: () => ({
     tasks: [
       { id: 1, title: "buy some milk ", isFav: false },
