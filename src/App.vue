@@ -8,7 +8,7 @@
 
     <!-- new task from -->
     <div class="new-task-form">
-      <TaskFrom />
+      <TaskForm />
     </div>
 
     <!-- filter  -->
@@ -35,12 +35,12 @@
 <script>
 import { ref } from "vue";
 import TaskDetails from "./components/TaskDetails.vue";
-import TaskFrom from "./components/TaskForm.vue";
+import TaskForm from "./components/TaskForm.vue";
 import { useTaskStore } from "./stores/TaskStore";
 export default {
   components: {
     TaskDetails,
-    TaskFrom,
+    TaskForm,
   },
   setup() {
     const taskStore = useTaskStore();
