@@ -6,7 +6,7 @@
       <h1>{{ taskStore.name }}</h1>
     </header>
     <div class="task-list">
-      <div v-for="task in taskStore.tasks">
+      <div v-for="task in taskStore.tasks" :key="task.id">
         {{ task.title }}
       </div>
     </div>
