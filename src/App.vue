@@ -7,15 +7,19 @@
     </header>
     <div class="task-list">
       <div v-for="task in taskStore.tasks" :key="task.id">
-        {{ task.title }}
+        <TaskDetails />
       </div>
     </div>
   </main>
 </template>
 
 <script>
+import TaskDetails from "./components/TaskDetails.vue";
 import { useTaskStore } from "./stores/TaskStore";
 export default {
+  components: {
+    TaskDetails,
+  },
   setup() {
     const taskStore = useTaskStore();
     return { taskStore };
