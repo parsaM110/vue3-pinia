@@ -7,7 +7,7 @@
     </header>
     <div class="task-list">
       <div v-for="task in taskStore.tasks" :key="task.id">
-        <TaskDetails />
+        <TaskDetails :task="task" />
       </div>
     </div>
   </main>
