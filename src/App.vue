@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="task-list" v-if="filter === 'favs'">
-      <p>You have {{ taskStore.totalCount }} favs left to do</p>
+      <p>You have {{ taskStore.favCount }} favs left to do</p>
       <div v-for="task in taskStore.favs" :key="task.id">
         <TaskDetails :task="task" />
       </div>
