@@ -5,6 +5,11 @@
       <img src="https://pinia.vuejs.org/logo.svg" alt="pinia logo" />
       <h1>{{ taskStore.name }}</h1>
     </header>
+    <div class="task-list">
+      <div v-for="task in taskStore.tasks">
+        {{ task.title }}
+      </div>
+    </div>
   </main>
 </template>
 
