@@ -9,6 +9,10 @@
       <div v-for="task in taskStore.tasks" :key="task.id">
         <TaskDetails :task="task" />
       </div>
+      <h3>favorites</h3>
+      <div v-for="task in taskStore.favs" :key="task.id">
+        <TaskDetails :task="task" />
+      </div>
     </div>
   </main>
 </template>
