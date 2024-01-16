@@ -25,5 +25,21 @@ export const useTaskStore = defineStore("taskStore", {
     addTask(task) {
       this.tasks.push(task);
     },
+    deleteTask(id) {
+      this.tasks = this.tasks.filter((t) => t.id !== id);
+      // if  t.id !== id is true which is for not selected for delete: it stays
+      // if  t.id !== id is false which is for selected for delete: it filter out
+    },
+    toggleFav(id) {
+      const task = this.tasks.find((t) => t.id === id);
+      task.isFav = !task.isFav;
+    }, // remember   const task is connected to this.tasks it is not a copy
+    // for making copy you should do this :
+    // const task = {...this.tasks.find((t) => t.id === id)};
+
+    //const taskIndex = this.tasks.findIndex((t) => t.id === id);
+    //if (taskIndex !== -1) {
+    // const originalTask = { ...this.tasks[taskIndex] };
+    //}
   },
 }); // useTaskStore is a function -> use `use` is a naming convention
