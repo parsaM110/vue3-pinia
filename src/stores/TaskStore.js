@@ -12,5 +12,13 @@ export const useTaskStore = defineStore("taskStore", {
     favs() {
       return this.tasks.filter((t) => t.isFav);
     },
+    favCount() {
+      return this.tasks.reduce((p, c) => {
+        return c.isFav ? p + 1 : p;
+      }, 0); // p is the prevous value which we initiate with 0 and c is current value which is from array
+    },
+    totalCount: (state) => {
+      return state.tasks.length;
+    },
   },
 }); // useTaskStore is a function -> use `use` is a naming convention
