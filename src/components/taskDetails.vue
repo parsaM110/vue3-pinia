@@ -5,7 +5,10 @@
       <i class="material-icons" @click="taskStore.deleteTask(task.id)"
         >delete</i
       >
-      <i class="material-icons" @click="taskStore.toggleFav(task.id)"
+      <i
+        class="material-icons"
+        :class="{ active: task.isFav }"
+        @click="taskStore.toggleFav(task.id)"
         >favorite</i
       >
     </div>
