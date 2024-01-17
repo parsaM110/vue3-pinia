@@ -51,7 +51,7 @@ export default {
   setup() {
     const taskStore = useTaskStore();
 
-    const { tasks, loading, favs, totalCount, favCount } =
+    const { tasks, name, loading, favs, totalCount, favCount } =
       storeToRefs(taskStore);
 
     // fetch tasks
@@ -59,7 +59,16 @@ export default {
 
     const filter = ref("all");
 
-    return { taskStore, filter, tasks, loading, favs, totalCount, favCount };
+    return {
+      taskStore,
+      filter,
+      tasks,
+      name,
+      loading,
+      favs,
+      totalCount,
+      favCount,
+    };
   },
 };
 </script>
