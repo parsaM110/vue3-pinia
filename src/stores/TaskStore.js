@@ -22,14 +22,26 @@ export const useTaskStore = defineStore("taskStore", {
   actions: {
     async fetchTasks() {
       this.loading = true;
-      const res = await fetch("https://retoolapi.dev/SF2SOQ/tasks");
+      const res = await fetch("https://retoolapi.dev/SF2SOQ/tasks"); //retool api uses json-server
       const data = await res.json();
 
       this.tasks = data;
       this.loading = false;
     },
-    addTask(task) {
+    async addTask(task) {
       this.tasks.push(task);
+
+      const res = await fetch("https://retoolapi.dev/SF2SOQ/tasks", {
+        method: "POST",
+        body: JSON.stringify(task),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.error) {
+        console.log(res.error);
+      }
     },
     deleteTask(id) {
       this.tasks = this.tasks.filter((t) => t.id !== id);
