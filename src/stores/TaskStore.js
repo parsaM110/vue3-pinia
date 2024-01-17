@@ -54,9 +54,21 @@ export const useTaskStore = defineStore("taskStore", {
         console.log(err);
       }); // using catch to catch error no if statement
     },
-    toggleFav(id) {
+    async toggleFav(id) {
       const task = this.tasks.find((t) => t.id === id);
       task.isFav = !task.isFav;
+
+      const res = await fetch("https://retoolapi.dev/SF2SOQ/tasks/" + id, {
+        method: "PATCH",
+        body: JSON.stringify({ isFav: task.isFav }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.error) {
+        console.log(res.error);
+      }
     }, // remember   const task is connected to this.tasks it is not a copy
     // for making copy you should do this :
     // const task = {...this.tasks.find((t) => t.id === id)};
