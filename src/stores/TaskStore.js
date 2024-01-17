@@ -43,10 +43,16 @@ export const useTaskStore = defineStore("taskStore", {
         console.log(res.error);
       }
     },
-    deleteTask(id) {
+    async deleteTask(id) {
       this.tasks = this.tasks.filter((t) => t.id !== id);
       // if  t.id !== id is true which is for not selected for delete: it stays
       // if  t.id !== id is false which is for selected for delete: it filter out
+
+      const res = await fetch("https://retoolapi.dev/SF2SOQ/tasks/" + id, {
+        method: "DELETE",
+      }).catch((err) => {
+        console.log(err);
+      }); // using catch to catch error no if statement
     },
     toggleFav(id) {
       const task = this.tasks.find((t) => t.id === id);
