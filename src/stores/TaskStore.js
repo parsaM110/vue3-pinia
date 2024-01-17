@@ -2,11 +2,9 @@ import { defineStore } from "pinia";
 // if you dont export it you cant use it in App.vue
 export const useTaskStore = defineStore("taskStore", {
   state: () => ({
-    tasks: [
-      { id: 1, title: "buy some milk ", isFav: false },
-      { id: 2, title: "buy bread", isFav: true },
-    ],
+    tasks: [],
     name: "Yoshi",
+    loading: false,
   }),
   getters: {
     favs() {
@@ -22,6 +20,14 @@ export const useTaskStore = defineStore("taskStore", {
     },
   },
   actions: {
+    async fetchTasks() {
+      this.loading = true;
+      const res = await fetch("https://retoolapi.dev/SF2SOQ/tasks");
+      const data = await res.json();
+
+      this.tasks = data;
+      this.loading = false;
+    },
     addTask(task) {
       this.tasks.push(task);
     },
